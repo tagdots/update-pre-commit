@@ -1,5 +1,7 @@
 # Update-Pre-Commit
 
+[![CI](https://github.com/tagdots/update-pre-commit/actions/workflows/ci.yaml/badge.svg)](https://github.com/tagdots/update-pre-commit/actions/workflows/ci.yaml) [![Code Coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/tagdots/update-pre-commit/refs/heads/badge/coverage.json)](https://github.com/tagdots/update-pre-commit/actions/workflows/cron-coverage.yaml)
+
 ## 😎 Why you need update-pre-commit?
 If you are already using `pre-commit` or you are planning to use `pre-commit` to detect issues before code check-in and reduce the burden on code reviewers, **update-pre-commit** can compliment `pre-commit`.
 
