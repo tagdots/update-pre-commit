@@ -1,0 +1,43 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: "weekly"
+      day: "saturday"
+      cronjob: "1-15 20 * * 6"
+      timezone: "America/Los_Angeles"
+    open-pull-requests-limit: 1
+    groups:
+      github-actions:
+        patterns:
+          - "*"
+    commit-message:
+      prefix: "[GITHUB-ACTIONS] "
+    rebase-strategy: "disabled"
+    allow:
+      - dependency-type: "direct"
+      - dependency-type: "indirect"
+
+  - package-ecosystem: pip
+    directory: /
+    schedule:
+      interval: "weekly"
+      day: "saturday"
+      cronjob: "16-30 20 * * 6"
+      timezone: "America/Los_Angeles"
+    open-pull-requests-limit: 1
+    groups:
+      pip:
+        patterns:
+          - "*"
+    commit-message:
+      prefix: "[PIP] "
+    rebase-strategy: "disabled"
+    versioning-strategy: increase
+    allow:
+      - dependency-type: "direct"
+      - dependency-type: "indirect"
+
+
+# NOTE: this file is managed by terraform
