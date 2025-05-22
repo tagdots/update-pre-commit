@@ -85,7 +85,7 @@ jobs:
       run: |
         # setup file - coverage.json
         # use template.json to create/replace coverage.json
-        sed -e 's/TPL_LABEL/$LABEL/g;s/TPL_LCOLOR/$LCOLOR/g;s/TPL_MESSAGE/$MESSAGE/g;s/TPL_COLOR/$COLOR/g' template.json > coverage.json
+        sed -e 's/TPL_LABEL/${{ env.LABEL }}/g;s/TPL_LCOLOR/${{ env.LCOLOR }}/g;s/TPL_MESSAGE/${{ env.MESSAGE }}/g;s/TPL_COLOR/${{ env.COLOR }}/g' template.json > coverage.json
 
     - name: Push commits to badge branch
       run: |
