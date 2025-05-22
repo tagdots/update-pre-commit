@@ -10,7 +10,7 @@ on:  # yamllint disable-line rule:truthy
       - published
 
 env:
-  PACKAGE_NAME: pkg-15903
+  PACKAGE_NAME: update-pre-commit
   PYTHON_VERSION: '3.12.x'
 
 permissions:
