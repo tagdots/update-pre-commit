@@ -9,13 +9,11 @@ If you are already using `pre-commit` or you are planning to use `pre-commit` to
 
 ## 🪜 Prerequisites
 ```
-* GitHub
-  □ create an account.
-  □ create a fine-grained personal access token with appropriate permissions.
-  (see attachment below)
-
 * Python (3.12+)
   □ install update-pre-commit.
+
+* GitHub
+  □ create a fine-grained token with repository permissions (see below).
 ```
 
 ![GitHub Token Permission](assets/github_token-permissions.png)
@@ -24,7 +22,9 @@ If you are already using `pre-commit` or you are planning to use `pre-commit` to
 
 ## 🔆 Install update-pre-commit
 
-In the examples below, we install **update-pre-commit** on a project named `hello-world` in a virtual environment named after the project.
+We use a GitHub project named `hello-world` in the command-line examples below.  This project has `pre-commit` installed and a valid `.pre-commit-config.yaml`.
+
+We will first install **update-pre-commit** in a virtual environment named after the project.  Next, we will show the results of running **update-pre-commit** with different options.
 
 ```
 ~/work/hello-world $ workon hello-world
@@ -36,7 +36,7 @@ In the examples below, we install **update-pre-commit** on a project named `hell
 
 ## 🔍 Using update-pre-commit
 
-🏃 _**Run to show command line usage and options**_
+🏃 _**Run to show command line usage and options**_: `--help`
 ```
 (hello-world) ~/work/hello-world $ update-pre-commit --help
 
@@ -51,7 +51,7 @@ Options:
 
 <br>
 
-🏃 _**Run to show version**_
+🏃 _**Run to show version**_: `--version`
 ```
 (hello-world) ~/work/hello-world $ update-pre-commit --version
 update-pre-commit, version 1.0.0
@@ -59,9 +59,9 @@ update-pre-commit, version 1.0.0
 
 <br>
 
-🏃 _**Run without any options**_
+🏃 _**Run to produce a list of out-of-date hooks**_: `--dry-run true`
 
-**update-pre-commit** implicitly runs with the option `--dry-run true` and does the following:
+The option `--dry-run true` is run by default and does the following:
 1. read the `.pre-commit-config.yaml`.
 1. produce a list of out-of-date pre-commit hooks.
 
@@ -79,12 +79,12 @@ Update revs in .pre-commit-config.yaml: None
 
 <br>
 
-🏃 _**Run with `--dry-run false` option**_
+🏃 _**Run to produce a list of out-of-date hooks and a PR**_: `--dry-run false`
 
-**update-pre-commit** runs with the option `--dry-run false` and does the following:
+The option `--dry-run false` does the following:
 1. read the `.pre-commit-config.yaml`.
 1. produce a list of out-of-date pre-commit hooks.
-1. checkout a new git branch `update_pre_commit_01JV8P09N4G5K9Q4DDD533ARBH`.
+1. checkout a new git branch `update_pre_commit_XXXXXXXXXXXXXXXXXXXXX`.
 1. update hooks rev inside `.pre-commit-config.yaml`.
 1. create a pull request against repository default branch.
 
