@@ -259,8 +259,7 @@ def main(file, dry_run):
             print(f'\nUpdate revs in {file}: None\n')
 
     except Exception:
-        print('Error !! Ensure that the pre-commit config file is valid and the fine-grained token\
-               has write permissions to contents and pull requests.')
+        print('Error !! Ensure that the pre-commit config file is valid and the token has appropriate permissions.')
         sys.exit(1)
 
 
