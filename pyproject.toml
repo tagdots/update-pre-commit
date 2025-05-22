@@ -23,12 +23,12 @@ classifiers = [
 ]
 
 dependencies = [
-  "click==8.2.0",
+  "click==8.2.1",
   "click-option-group==0.5.7",
   "gitpython==3.1.44",
   "pygithub==2.6.1",
   "pyyaml==6.0.2",
-  "setuptools==80.7.1",
+  "setuptools==80.8.0",
   "ulid-py==1.1",
   "virtualenv==20.31.2",
 ]
