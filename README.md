@@ -3,15 +3,23 @@
 [![CI](https://github.com/tagdots/update-pre-commit/actions/workflows/ci.yaml/badge.svg)](https://github.com/tagdots/update-pre-commit/actions/workflows/ci.yaml) [![Code Coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/tagdots/update-pre-commit/refs/heads/badge/coverage.json)](https://github.com/tagdots/update-pre-commit/actions/workflows/cron-coverage.yaml)
 
 ## 😎 Why you need update-pre-commit?
-If you are already using `pre-commit` or you are planning to use `pre-commit` to detect issues before code check-in and reduce the burden on code reviewers, **update-pre-commit** can compliment `pre-commit`.
+If you are already using `pre-commit` or you are planning to use `pre-commit` to enforce coding standard and detect issues before code check-in, **update-pre-commit** compliments `pre-commit` on update of `.pre-commit-config.yaml` and automate your `change management` operations with the feature to  create pull request.
 
-**update-pre-commit** reads your project's `pre-commit` configuration file (`.pre-commit-config.yaml`), makes GitHub API call to get the latest update on each of the pre-commit hooks, and creates a pull request on **GitHub**.  You can use our `action` (coming soon) to run **update-pre-commit** and keep your `pre-commit` configuration up to date.
+<br>
+
+## ⭐ What does **update-pre-commit** do?
+
+- reads/updates your project's `.pre-commit-config.yaml`.
+- creates a pull request on **GitHub**.
+- use our `action` (_coming soon_) to run **update-pre-commit** and keep your `pre-commit` configuration up to date.<br><br>
+_**p.s. for your protection, our updates do NOT accept "alpha", "beta", "prerelease" and "rc"**_
 
 <br>
 
 ## 🪜 Prerequisites
 ```
 * Python (3.12+)
+  □ install pre-commit.
   □ install update-pre-commit.
 
 * GitHub
@@ -24,7 +32,7 @@ If you are already using `pre-commit` or you are planning to use `pre-commit` to
 
 ## 🔆 Install update-pre-commit
 
-We use a GitHub project named `hello-world` in the command-line examples below.  This project has `pre-commit` installed and a valid `.pre-commit-config.yaml`.
+In the command-line examples below, we use a GitHub project named `hello-world`.  This project has `pre-commit` installed and a valid `.pre-commit-config.yaml`.
 
 We will first install **update-pre-commit** in a virtual environment named after the project.  Next, we will show the results of running **update-pre-commit** with different options.
 
@@ -39,14 +47,16 @@ We will first install **update-pre-commit** in a virtual environment named after
 ## 🔍 Using update-pre-commit
 
 🏃 _**Run to show command line usage and options**_: `--help`
+
 ```
 (hello-world) ~/work/hello-world $ update-pre-commit --help
 
 Usage: update-pre-commit [OPTIONS]
 
 Options:
-  --file TEXT        <file> (default: .pre-commit-config.yaml).
-  --dry-run BOOLEAN  <true, false> (default: true).
+  --file TEXT        default: .pre-commit-config.yaml
+  --dry-run BOOLEAN  default: true
+  --open-pr BOOLEAN  default: false
   --version          Show the version and exit.
   --help             Show this message and exit.
 ```
@@ -54,6 +64,7 @@ Options:
 <br>
 
 🏃 _**Run to show version**_: `--version`
+
 ```
 (hello-world) ~/work/hello-world $ update-pre-commit --version
 update-pre-commit, version 1.0.0
@@ -61,16 +72,19 @@ update-pre-commit, version 1.0.0
 
 <br>
 
-🏃 _**Run to produce a list of out-of-date hooks**_: `--dry-run true`
+🏃 _**Run without adding any options**_
 
-The option `--dry-run true` is run by default and does the following:
-1. read the `.pre-commit-config.yaml`.
-1. produce a list of out-of-date pre-commit hooks.
+By default, **update-pre-commit** implicitly runs `--dry-run true --open-pr false`.
+
+Thus, **update-pre-commit**:
+1. reads `.pre-commit-config.yaml`.
+1. produces a list of out-of-date pre-commit hooks on screen.<br>
+(**NO** changes will be made to `.pre-commit-config.yaml`)
 
 ```
 (hello-world) ~/work/hello-world $ update-pre-commit
 
-Starting update-pre-commit on .pre-commit-config.yaml (dry-run True)...
+Starting update-pre-commit on .pre-commit-config.yaml (dry-run True open-pr False)...
 
 hadolint/hadolint (v2.11.0) is not using the latest release rev (v2.12.0)
 pycqa/flake8 (7.1.2) is not using the latest release tag (7.2.0)
@@ -81,19 +95,39 @@ Update revs in .pre-commit-config.yaml: None
 
 <br>
 
-🏃 _**Run to produce a list of out-of-date hooks and a PR**_: `--dry-run false`
+🏃 _**Run to update out-of-date hooks**_: `--dry-run false`
 
-The option `--dry-run false` does the following:
-1. read the `.pre-commit-config.yaml`.
-1. produce a list of out-of-date pre-commit hooks.
-1. checkout a new git branch `update_pre_commit_XXXXXXXXXXXXXXXXXXXXX`.
-1. update hooks rev inside `.pre-commit-config.yaml`.
-1. create a pull request against repository default branch.
+**update-pre-commit**:
+1. reads `.pre-commit-config.yaml`.
+1. produce a list of out-of-date pre-commit hooks on screen.
+1. update `.pre-commit-config.yaml`.
 
 ```
 (hello-world) ~/work/hello-world $ update-pre-commit --dry-run false
 
-Starting update-pre-commit on .pre-commit-config.yaml (dry-run False)...
+Starting update-pre-commit on .pre-commit-config.yaml (dry-run False open-pr False)...
+
+hadolint/hadolint (v2.11.0) is not using the latest release rev (v2.12.0)
+pycqa/flake8 (7.1.2) is not using the latest release tag (7.2.0)
+antonbabenko/pre-commit-terraform (v1.98.0) is not using the latest release rev (v1.98.1)
+
+Update revs in .pre-commit-config.yaml: Success
+```
+
+<br>
+
+🏃 _**Run to update out-of-date hooks and open a pull request**_: `--dry-run false --open-pr true`
+
+**update-pre-commit**:
+1. reads `.pre-commit-config.yaml`.
+1. produces a list of out-of-date pre-commit hooks on screen.
+1. update `.pre-commit-config.yaml`.
+1. checkout a new git branch `update_pre_commit_XXXXXXXXXXXXXXXXXXXXX`.
+1. open a pull request against repository default branch.
+```
+(hello-world) ~/work/hello-world $ update-pre-commit --dry-run false --open-pr true
+
+Starting update-pre-commit on .pre-commit-config.yaml (dry-run False open-pr True)...
 
 hadolint/hadolint (v2.11.0) is not using the latest release rev (v2.12.0)
 pycqa/flake8 (7.1.2) is not using the latest release tag (7.2.0)
