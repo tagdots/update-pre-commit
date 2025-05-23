@@ -222,11 +222,12 @@ def create_pr(gh, owner_repo, active_branch_name, variance_list, msg_suffix):
 
 
 @click.command()
-@click.option('--file', required=False, default='.pre-commit-config.yaml', help='<file> (default: .pre-commit-config.yaml)')
-@click.option('--dry-run', required=False, default=True, help='<true, false> (default: true).')
+@click.option('--file', required=False, default='.pre-commit-config.yaml', help='default: .pre-commit-config.yaml')
+@click.option('--dry-run', required=False, default=True, help='default: true')
+@click.option('--open-pr', required=False, default=False, help='default: false')
 @click.version_option(version=__version__)
-def main(file, dry_run):
-    print(f"Starting update-pre-commit on {file} (dry-run {dry_run})...\n")
+def main(file, dry_run, open_pr):
+    print(f'Starting update-pre-commit on {file} (dry-run {dry_run} open-pr {open_pr})...\n')
     try:
         cleanup = 10
         variance_list = []
@@ -244,17 +245,19 @@ def main(file, dry_run):
 
         if len(variance_list) > 0 and not dry_run:
             update_pre_commit_config(file, variance_list)
-            owner_repo, active_branch_name = checkout_new_branch()
-            push_commit(file, active_branch_name, msg_suffix)
-            pr_number = create_pr(gh, owner_repo, active_branch_name, variance_list, msg_suffix)
 
-            if 'COVERAGE_RUN' in os.environ:
-                repo = gh.get_repo(owner_repo)
-                pull = repo.get_pull(pr_number)
-                ref = repo.get_git_ref(f"heads/{active_branch_name}")
-                time.sleep(cleanup)
-                pull.edit(state="closed")
-                ref.delete()
+            if open_pr:
+                owner_repo, active_branch_name = checkout_new_branch()
+                push_commit(file, active_branch_name, msg_suffix)
+                pr_number = create_pr(gh, owner_repo, active_branch_name, variance_list, msg_suffix)
+
+                if 'COVERAGE_RUN' in os.environ:
+                    repo = gh.get_repo(owner_repo)
+                    pull = repo.get_pull(pr_number)
+                    ref = repo.get_git_ref(f"heads/{active_branch_name}")
+                    time.sleep(cleanup)
+                    pull.edit(state="closed")
+                    ref.delete()
         else:
             print(f'\nUpdate revs in {file}: None\n')
 
