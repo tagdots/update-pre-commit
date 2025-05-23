@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 1.1.0 (2025-05-23)
+
+### Feat
+
+- add --open-pr option feature
+
+### Fix
+
+- update package name
+
 ## 1.0.0 (2025-05-22)
 
 ### Feat
