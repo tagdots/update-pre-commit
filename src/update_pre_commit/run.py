@@ -213,7 +213,7 @@ def create_pr(gh, owner_repo, active_branch_name, variance_list, msg_suffix):
 
     try:
         pr = repo.create_pull(title=pr_title, body=pr_body, head=pr_branch, base=pr_base_branch)
-        print(f'Create pull request #{pr.number} successfully: {pr.html_url}\n')
+        print(f'\nCreate pull request #{pr.number} successfully: {pr.html_url}\n')
         return pr.number
 
     except Exception as e:  # pragma: no cover
