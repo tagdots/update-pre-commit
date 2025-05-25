@@ -106,6 +106,10 @@ jobs:
 
     steps:
 
+    - name: Validate after short wait to ensure publish is complete
+      shell: bash
+      run: sleep 15
+
     - name: Checkout source code
       uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
