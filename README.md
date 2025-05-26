@@ -26,7 +26,7 @@ _**p.s. for your protection, our updates do NOT accept "alpha", "beta", "prerele
   □ create a fine-grained token with repository permissions (see below).
 ```
 
-![GitHub Token Permission](assets/github_token-permissions.png)
+![GitHub Token Permission](https://raw.githubusercontent.com/tagdots/update-pre-commit/refs/heads/main/assets/github_token-permissions.png)
 
 <br>
 
@@ -171,7 +171,7 @@ Created pull request #101 successfully: https://github.com/tagdots/hello-world/p
 
 Pull requests and stars are always welcome.  For pull requests to be accepted on this project, you should follow [PEP8][pep8] when creating/updating Python codes.
 
-See [Contributing](CONTRIBUTING.md)
+See [Contributing][contributing]
 
 <br>
 
@@ -185,5 +185,6 @@ See [Contributing](CONTRIBUTING.md)
 
 <br>
 
+[contributing]: https://github.com/tagdots/update-pre-commit/blob/main/CONTRIBUTING.md
 [issues]: https://github.com/tagdots/update-pre-commit/issues
 [pep8]: https://google.github.io/styleguide/pyguide.html
