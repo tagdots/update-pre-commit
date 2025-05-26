@@ -4,7 +4,7 @@ name: cron-tasks
 
 on:
   schedule:
-    - cron: '30 22 * * 6'
+    - cron: '30 3 * * 0'
 
   workflow_dispatch:
 
@@ -51,8 +51,8 @@ jobs:
       uses: actions/stale@5bef64f19d7facfb25b37b414482c7164d639639 # v9.1.0
       with:
         stale-issue-message: 'This issue is stale because it has been open 4 days with no activity. Remove stale label or comment or this will be closed in 3 days.'
-        days-before-stale: 4
-        days-before-close: 3
+        days-before-stale: 14
+        days-before-close: 14
 
   stale-branches:
   # https://github.com/crs-k/stale-branches
@@ -67,7 +67,7 @@ jobs:
     steps:
 
     - id: stale-branches
-      uses: crs-k/stale-branches@ee199d60e5020e819dd84fea8c0d4f83c161a590 # v8.1.1
+      uses: crs-k/stale-branches@1b1680a1ec7ef3845980fe7b4871b88011fc5dcf # v8.2.0
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
         days-before-stale: 8
