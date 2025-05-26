@@ -25,7 +25,8 @@ We appreciate your time and effort and recommend the following:
 1. [Fork and clone this repository][fork-a-repository].
 1. Configure and install the dependencies: `make test-install`
 1. Create a new local branch: `git checkout -b <my-branch-name>`.
-1. Make your code changes and tests.
+1. Create/update your code changes.
+1. Create/update corresponding automated tests and documentation.
 1. Push to your fork and submit a pull request.
 1. Your pull request will be reviewed and merged.
 
