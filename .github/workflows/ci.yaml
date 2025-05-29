@@ -51,9 +51,10 @@ jobs:
     uses: ./.github/workflows/reusable-dependency-review.yaml
 
   validate-release:
-    if: ${{ startsWith(github.head_ref, 'release/') }}
-
     needs: [pre-commit, build-test, dependency, codeql]
+
+    # needs are not evaluated properly before the steps kicks in.  Therefore, always() must be here.
+    if: ${{ always() && startsWith(github.head_ref, 'release/') && needs.pre-commit.result == 'success' && needs.build-test.result == 'success' && contains(fromJSON('["success", "skipped"]'), needs.codeql.result) && contains(fromJSON('["success", "skipped"]'), needs.dependency.result) }}
 
     runs-on: ubuntu-latest
 
@@ -83,6 +84,7 @@ jobs:
         echo "Uploaded Artifact ID        : ${{ needs.build-test.outputs.ARTIFACT_ID }}"
 
     - name: Download distributions
+      if: ${{ github.event.repository.language == 'Python' }}
       id: artifact-download
       uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 #v4.3.0
       with:
@@ -92,6 +94,7 @@ jobs:
         path: dist/
 
     - shell: bash
+      if: ${{ github.event.repository.language == 'Python' }}
       run: |
         # check artifacts located inside dist/artifact/
         tree .
