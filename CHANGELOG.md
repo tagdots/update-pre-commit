@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 1.1.9 (2025-06-10)
+
+### Fix
+
+- sleep delays validation to ensure publish is complete
+
 ## 1.1.0 (2025-05-23)
 
 ### Feat
