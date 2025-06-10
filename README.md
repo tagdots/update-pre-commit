@@ -3,24 +3,28 @@
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/10601/badge)](https://www.bestpractices.dev/projects/10601) [![CI](https://github.com/tagdots/update-pre-commit/actions/workflows/ci.yaml/badge.svg)](https://github.com/tagdots/update-pre-commit/actions/workflows/ci.yaml) [![Code Coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/tagdots/update-pre-commit/refs/heads/badge/coverage.json)](https://github.com/tagdots/update-pre-commit/actions/workflows/cron-coverage.yaml)
 
 ## 😎 Why you need update-pre-commit?
-If you are already using `pre-commit` or you are planning to use `pre-commit` to enforce coding standard and detect issues before code check-in, **update-pre-commit** compliments `pre-commit` on update of `.pre-commit-config.yaml` and automate your `change management` operations with the feature to  create pull request.
+If you are already using `pre-commit` or you are planning to use `pre-commit` to enforce coding standard and detect issues before code check-in, **update-pre-commit** updates hooks revs in `.pre-commit-config.yaml` and automate creating pull request.
 
 <br>
 
-## ⭐ What does **update-pre-commit** do?
-
-- reads/updates your project's `.pre-commit-config.yaml`.
-- creates a pull request on **GitHub**.
-- use our `action` (_coming soon_) to run **update-pre-commit** and keep your `pre-commit` configuration up to date.<br><br>
-_**p.s. for your protection, our updates do NOT accept "alpha", "beta", "prerelease" and "rc"**_
+## ⭐ Why switch to "update-pre-commit"?
+- we outperform others in update speed by more than `70%` (with minimum 4 hooks).
+- we reduce your supply chain risks with `openssf best practices` in our development and operation.
+- we automate your `change management` operations with built-in feature to create pull request on **GitHub**.
+- we protect you against unreliable revs with tag such as `alpha`, `beta`, `prerelease`, and `rc`.
 
 <br>
 
-## 🪜 Prerequisites
+### Use Case 1️⃣ - running on GitHub action
+Please visit our GitHub action ([update-pre-commit-action](https://github.com/marketplace/actions/update-pre-commit-action)) on the `GitHub Marketplace`.
+
+<br>
+
+### Use Case 2️⃣ - running locally on your computer
+**Prerequisites**
 ```
 * Python (3.12+)
   □ install pre-commit.
-  □ install update-pre-commit.
 
 * GitHub
   □ create a fine-grained token with repository permissions (see below).
@@ -61,7 +65,7 @@ Options:
   --help             Show this message and exit.
 ```
 
-<br>
+<br><br>
 
 🏃 _**Run to show version**_: `--version`
 
@@ -70,9 +74,9 @@ Options:
 update-pre-commit, version 1.0.0
 ```
 
-<br>
+<br><br>
 
-🏃 _**Run without adding any options**_
+🏃 _**Run default (without any options)**_
 
 By default, **update-pre-commit** implicitly runs `--dry-run true --open-pr false`.
 
@@ -93,7 +97,7 @@ antonbabenko/pre-commit-terraform (v1.98.0) is not using the latest release rev 
 Update revs in .pre-commit-config.yaml: None
 ```
 
-<br>
+<br><br>
 
 🏃 _**Run to update out-of-date hooks**_: `--dry-run false`
 
@@ -114,7 +118,7 @@ antonbabenko/pre-commit-terraform (v1.98.0) is not using the latest release rev 
 Update revs in .pre-commit-config.yaml: Success
 ```
 
-<br>
+<br><br>
 
 🏃 _**Run to update out-of-date hooks and open a pull request**_: `--dry-run false --open-pr true`
 
