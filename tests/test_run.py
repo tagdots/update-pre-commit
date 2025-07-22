@@ -141,8 +141,8 @@ class TestZMain(unittest.TestCase):
     ''' assert zero exit code with dry-run false '''
     def test_main_dry_run_false_success(self):
         result = self.runner.invoke(main, ['--dry-run', 'False', '--open-pr', 'True'])
-        # print(result.stdout)
-        # print(result.stderr)
+        print(result.stdout)
+        print(result.stderr)
         self.assertEqual(result.exit_code, 0)
 
     ''' assert zero exit code with help '''
