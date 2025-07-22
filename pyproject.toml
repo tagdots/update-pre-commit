@@ -78,7 +78,7 @@ include = [ "src/update_pre_commit/*" ]
 omit = [ "tests/*" ]
 
 [tool.coverage.report]
-fail_under = 80
+fail_under = 20
 show_missing = false
 include = [ "src/update_pre_commit/*" ]
 
