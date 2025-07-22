@@ -1,13 +1,15 @@
 # Update-Pre-Commit
 
-[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/10601/badge)](https://www.bestpractices.dev/projects/10601) [![CI](https://github.com/tagdots/update-pre-commit/actions/workflows/ci.yaml/badge.svg)](https://github.com/tagdots/update-pre-commit/actions/workflows/ci.yaml) [![Code Coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/tagdots/update-pre-commit/refs/heads/badge/coverage.json)](https://github.com/tagdots/update-pre-commit/actions/workflows/cron-coverage.yaml)
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/10601/badge)](https://www.bestpractices.dev/projects/10601)
+[![CI](https://github.com/tagdots/update-pre-commit/actions/workflows/ci.yaml/badge.svg)](https://github.com/tagdots/update-pre-commit/actions/workflows/ci.yaml)
+[![Code Coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/tagdots/update-pre-commit/refs/heads/badge/coverage.json)](https://github.com/tagdots/update-pre-commit/actions/workflows/cron-coverage.yaml)
 
 ## 😎 Why you need update-pre-commit?
 If you are already using `pre-commit` or you are planning to use `pre-commit` to enforce coding standard and detect issues before code check-in, **update-pre-commit** updates hooks revs in `.pre-commit-config.yaml` and automate creating pull request.
 
 <br>
 
-## ⭐ Why switch to "update-pre-commit"?
+## ⭐ Why switch to update-pre-commit?
 - we outperform others in update speed by more than `70%` (with minimum 4 hooks).
 - we reduce your supply chain risks with `openssf best practices` in our development and operation.
 - we automate your `change management` operations with built-in feature to create pull request on **GitHub**.
@@ -38,7 +40,7 @@ Please visit our GitHub action ([update-pre-commit-action](https://github.com/ma
 
 In the command-line examples below, we use a GitHub project named `hello-world`.  This project has `pre-commit` installed and a valid `.pre-commit-config.yaml`.
 
-We will first install **update-pre-commit** in a virtual environment named after the project.  Next, we will show the results of running **update-pre-commit** with different options.
+We will first install **update-pre-commit** in a virtual environment named after the project.  Next, we will run **update-pre-commit** with different options and show the results.
 
 ```
 ~/work/hello-world $ workon hello-world
