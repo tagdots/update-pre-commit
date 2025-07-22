@@ -37,7 +37,7 @@ def get_owner_repo(file):
     Parameter(s):
     file: .pre-commit-config.yaml (default)
 
-    Return: generartor object e.g. ({owner_repo: owner_repo, current_rev: current_rev })
+    Return: generator object e.g. ({owner_repo: owner_repo, current_rev: current_rev })
     """
     with open(f'{file}', 'r') as f:
         data = yaml.safe_load(f)
@@ -173,11 +173,11 @@ def push_commit(file, active_branch_name, msg_suffix):
 
     try:
         repo_obj = git.Repo(repo_path)
-        repo_obj.index.add(files_to_stage)  # other option ('*')
+        repo_obj.index.add(files_to_stage)
         repo_obj.index.write()
         commit = repo_obj.index.commit(message)
         repo_obj.git.push("--set-upstream", 'origin', branch)
-        print('Push commits successfully:')
+        print('Push commits to remote successfully:')
         print(f'from local branch: {branch}')
         print(f'with commit hash : {commit.hexsha}\n')
 
