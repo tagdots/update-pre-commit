@@ -33,7 +33,16 @@ dependencies = [
   "virtualenv==20.31.2",
 ]
 
-optional-dependencies.test = [ "build", "commitizen", "coverage", "flake8", "isort", "pre-commit", "pyscan-rs", "twine" ]
+optional-dependencies.test = [
+  "build",
+  "commitizen",
+  "coverage",
+  "flake8",
+  "isort",
+  "pre-commit",
+  "pyscan-rs",
+  "twine",
+]
 
 urls.Changelog = "https://github.com/tagdots/update-pre-commit/blob/main/CHANGELOG.md"
 urls.Documentation = "https://github.com/tagdots/update-pre-commit/blob/main/README.md"
@@ -64,7 +73,7 @@ source = [ "." ]
 
 [tool.coverage.run]
 branch = true
-command_line = "-m unittest discover -s tests/"
+command_line = "-m unittest discover -vs tests/"
 include = [ "src/update_pre_commit/*" ]
 omit = [ "tests/*" ]
 

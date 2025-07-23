@@ -206,7 +206,7 @@ def create_pr(gh, owner_repo, active_branch_name, variance_list, msg_suffix):
 
     print('Creating a Pull Request as follows:')
     print(f'Owner/Repo.  : {owner_repo}')
-    print(f'Title        : {pr_title}{msg_suffix}')
+    print(f'Title        : {pr_title}')
     print(f'Source Branch: {pr_branch}')
     print(f'Target Branch: {pr_base_branch}')
     print(f'Rev Variances: {pr_body}')
