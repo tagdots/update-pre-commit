@@ -1,5 +1,16 @@
 # CHANGELOG
 
+## 1.1.20 (2025-07-22)
+
+### Feat
+
+- add UPC to cron tasks
+
+### Fix
+
+- coverage run issues: use command_line, simplify Makefile, & use outdated config
+- fix typos and clarify documentation
+
 ## 1.1.9 (2025-06-10)
 
 ### Fix
