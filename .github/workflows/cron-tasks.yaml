@@ -23,6 +23,7 @@ jobs:
 
     permissions:
       contents: write
+      pull-requests: write
 
     outputs:
       COV_PER: ${{ steps.get-coverage-results.outputs.COV_PER }}
