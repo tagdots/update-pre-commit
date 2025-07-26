@@ -62,7 +62,7 @@ jobs:
         compression-level: 6
 
     - id: coverage-badge
-      uses: tagdots/setup-badge-action@3989b8b5c1c81c961b76d125c8ea50fc7739d9cf # 1.0.0
+      uses: tagdots/setup-badge-action@663d7a5382b8300caa4492de16e85aa7e4667ef0 # 1.0.3
       with:
         badge-name: coverage
         badge-url: https://github.com/tagdots/update-pre-commit/actions/workflows/cron-tasks.yaml
@@ -77,7 +77,7 @@ jobs:
 
     steps:
     - id: marketplace-badge
-      uses: tagdots/setup-badge-action@3989b8b5c1c81c961b76d125c8ea50fc7739d9cf # 1.0.0
+      uses: tagdots/setup-badge-action@663d7a5382b8300caa4492de16e85aa7e4667ef0 # 1.0.3
       with:
         badge-name: marketplace
         badge-url: https://github.com/marketplace/actions/setup-badge-action
