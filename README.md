@@ -6,15 +6,14 @@
 [![coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/tagdots/update-pre-commit/refs/heads/badges/badges/coverage.json)](https://github.com/tagdots/update-pre-commit/actions/workflows/cron-tasks.yaml)
 
 ## 😎 Why you need update-pre-commit?
-If you are already using `pre-commit` or you are planning to use `pre-commit` to enforce coding standard and detect issues before code check-in, **update-pre-commit** updates hooks revs in `.pre-commit-config.yaml` and automate creating pull request.
+If you are already using `pre-commit` or you are planning to use `pre-commit` to enforce coding standard and detect issues before code check-in, **update-pre-commit** keeps revs in `.pre-commit-config.yaml` up to date and facilitate your `change management` operations to optionally creates pull request.
 
 <br>
 
 ## ⭐ Why switch to update-pre-commit?
-- we outperform others in update speed by more than `70%` (with minimum 4 hooks).
-- we reduce your supply chain risks with `openssf best practices` in our development and operation.
-- we automate your `change management` operations with built-in feature to create pull request on **GitHub**.
+- we outperform others in update speed by more than `70%`.
 - we protect you against unreliable revs with tag such as `alpha`, `beta`, `prerelease`, and `rc`.
+- we reduce your supply chain risks with `openssf best practices` in our software development and operations.
 
 <br>
 
@@ -83,7 +82,7 @@ update-pre-commit, version 1.0.0
 
 By default, **update-pre-commit** implicitly runs `--dry-run true --open-pr false`.
 
-Thus, **update-pre-commit**:
+**update-pre-commit**:
 1. reads `.pre-commit-config.yaml`.
 1. produces a list of out-of-date pre-commit hooks on screen.<br>
 (**NO** changes will be made to `.pre-commit-config.yaml`)
@@ -106,7 +105,7 @@ Update revs in .pre-commit-config.yaml: None
 
 **update-pre-commit**:
 1. reads `.pre-commit-config.yaml`.
-1. produce a list of out-of-date pre-commit hooks on screen.
+1. produce a list of out-of-date pre-commit hooks.
 1. update `.pre-commit-config.yaml`.
 
 ```
@@ -128,9 +127,9 @@ Update revs in .pre-commit-config.yaml: Success
 **update-pre-commit**:
 1. reads `.pre-commit-config.yaml`.
 1. produces a list of out-of-date pre-commit hooks on screen.
-1. update `.pre-commit-config.yaml`.
+1. updates `.pre-commit-config.yaml`.
 1. checkout a new git branch `update_pre_commit_XXXXXXXXXXXXXXXXXXXXX`.
-1. open a pull request against repository default branch.
+1. opens a pull request against repository default branch.
 ```
 (hello-world) ~/work/hello-world $ update-pre-commit --dry-run false --open-pr true
 
