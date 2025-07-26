@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 """
-Purpose: update pre-commit configuration and create a pull request
+Purpose: update pre-commit configuration and optionally create a pull request
 """
 
 import json
@@ -148,7 +148,7 @@ def checkout_new_branch():
         repo_obj_branch_name = repo_obj.create_head(f'update_pre_commit_{branch_suffix}')
         repo_obj_branch_name.checkout()
         repo_obj_remote_url = repo_obj.remotes.origin.url
-        owner_repo = '/'.join(repo_obj_remote_url.rsplit('/', 2)[-2:]).replace('.git', '')
+        owner_repo = '/'.join(repo_obj_remote_url.rsplit('/', 2)[-2:]).replace('.git', '').replace('git@github.com:', '')
         print('Checkout new branch successfully....\n')
         return owner_repo, repo_obj_branch_name
 
@@ -234,15 +234,12 @@ def main(file, dry_run, open_pr):
         gh = get_auth()
         gen_repos_revs = get_owner_repo(file)
         start_thread(gh, variance_list, gen_repos_revs)
-        msg_suffix = ''
 
         """
         When coverage.py runs by the "coverage run" command, an environment variable COVERAGE_RUN is created.
         The PR title will have the suffix [CI - Testing] to indicate that it is created from some "coverage run".
         """
-        if 'COVERAGE_RUN' in os.environ:
-            msg_suffix = '[CI - Testing]'
-
+        msg_suffix = '[CI - Testing]' if 'COVERAGE_RUN' in os.environ else ''
         if len(variance_list) > 0 and not dry_run:
             update_pre_commit_config(file, variance_list)
 
