@@ -1,5 +1,4 @@
 # Makefile
-# NOTE: this file is managed by terraform
 
 usage:
 	@echo "usage:"
