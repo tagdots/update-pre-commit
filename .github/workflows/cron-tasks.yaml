@@ -82,9 +82,9 @@ jobs:
       uses: tagdots/setup-badge-action@663d7a5382b8300caa4492de16e85aa7e4667ef0 # 1.0.3
       with:
         badge-name: marketplace
-        badge-url: https://github.com/marketplace/actions/setup-badge-action
+        badge-url: https://github.com/marketplace/actions/update-pre-commit-action
         label: Marketplace
-        message: setup-badge-action
+        message: update-pre-commit-action
         message-color: FF6360
 
   stale-workflows: # https://github.com/Mattraks/delete-workflow-runs
