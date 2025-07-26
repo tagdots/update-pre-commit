@@ -6,14 +6,14 @@
 [![coverage](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/tagdots/update-pre-commit/refs/heads/badges/badges/coverage.json)](https://github.com/tagdots/update-pre-commit/actions/workflows/cron-tasks.yaml)
 
 ## 😎 Why you need update-pre-commit?
-If you are already using `pre-commit` or you are planning to use `pre-commit` to enforce coding standard and detect issues before code check-in, **update-pre-commit** keeps revs in `.pre-commit-config.yaml` up to date and facilitate your `change management` operations to optionally creates pull request.
+If you are already using `pre-commit` or you are planning to use `pre-commit` to enforce coding standard and detect issues before code check-in, **update-pre-commit** keeps revs in `.pre-commit-config.yaml` up to date and facilitate your `change management` operations to optionally create pull request.
 
 <br>
 
 ## ⭐ Why switch to update-pre-commit?
 - we outperform others in update speed by more than `70%`.
 - we protect you against unreliable revs with tag such as `alpha`, `beta`, `prerelease`, and `rc`.
-- we reduce your supply chain risks with `openssf best practices` in our software development and operations.
+- we reduce your supply chain risks with `openssf best practices` in our development and operations.
 
 <br>
 

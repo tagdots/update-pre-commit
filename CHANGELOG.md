@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 1.1.23 (2025-07-26)
+
+### Feat
+
+- add badges to cron-tasks
+
+### Fix
+
+- resolve checkout using git rather than https
+
 ## 1.1.20 (2025-07-22)
 
 ### Feat
