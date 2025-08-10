@@ -26,11 +26,11 @@ dependencies = [
   "click==8.2.1",
   "click-option-group==0.5.7",
   "gitpython==3.1.45",
-  "pygithub==2.6.1",
+  "pygithub==2.7.0",
   "pyyaml==6.0.2",
   "setuptools==80.9.0",
   "ulid-py==1.1",
-  "virtualenv==20.32.0",
+  "virtualenv==20.33.1",
 ]
 
 optional-dependencies.test = [
