@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 1.1.31 (2025-08-15)
+
+### Fix
+
+- replace the cron task that deletes workflow runs
+
 ## 1.1.23 (2025-07-26)
 
 ### Feat

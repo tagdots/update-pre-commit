@@ -5,7 +5,7 @@ requires = [ "setuptools", "wheel" ]
 
 [project]
 name = "update-pre-commit"
-version = "1.1.23"
+version = "1.1.31"
 
 readme = "README.md"
 license-files = [ "LICENSE" ]
