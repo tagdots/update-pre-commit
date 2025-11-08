@@ -1,5 +1,21 @@
 # CHANGELOG
 
+## 1.2.3 (2025-11-08)
+
+### Fix
+
+- upgrade to use Python 3.14
+- update deps and add uv to make
+- update cron-tasks - delete-workflow-runs and delete-branches
+- add "fail-on-severity: low" to the configuration to low level vuln alert
+- resolve stuck version comment
+- replace stale-branches with delete-branches-action
+- resolve minor typos in actions
+
+### Refactor
+
+- improve code quality - type hint, static checking, streamline functions
+
 ## 1.1.31 (2025-08-15)
 
 ### Fix
