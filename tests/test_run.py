@@ -22,6 +22,10 @@ from update_pre_commit.run import (
 )
 
 
+def get_gh_token():
+    return os.environ.get("GH_TOKEN")
+
+
 class TestGetAuth(unittest.TestCase):
     ''' hold output from source script '''
     def setUp(self):
@@ -35,20 +39,33 @@ class TestGetAuth(unittest.TestCase):
 
     """
     reference: https://github.com/PyGithub/PyGithub/blob/v2.6.1/github/Auth.py#L153-L173
-    assertion: assert Token is token instance is string and has length > 0
+    assertion: assert KeyError when GH_TOKEN env variable does not exist
     """
-    @patch.dict(os.environ, {'GH_TOKEN': 'github_pat_123456'}, clear=True)  # checkov:skip=CKV_SECRET_6
-    def test_get_auth_with_valid_gh_token(self):
-        self.assertIsInstance(get_auth(), Github)
+    @patch.dict(os.environ, {}, clear=True)
+    def test_get_auth_with_no_gh_token(self):
+        with self.assertRaises(KeyError):
+            if "GH_TOKEN" in os.environ:
+                print('GH_TOKEN is found')
+            else:
+                print('GH_TOKEN is not found')
+            get_auth()
 
     """
     reference: https://github.com/PyGithub/PyGithub/blob/v2.6.1/github/Auth.py#L153-L173
-    assertion: assert AssertionError when length of Token is not > 0
+    assertion: assert PermissionError with invalid token
     """
-    @patch.dict(os.environ, {'GH_TOKEN': ''}, clear=True)  # checkov:skip=CKV_SECRET_6
+    @patch.dict(os.environ, {'GH_TOKEN': 'no_permission'}, clear=True)  # checkov:skip=CKV_SECRET_6
     def test_get_auth_with_invalid_gh_token(self):
-        with self.assertRaises(AssertionError):
+        with self.assertRaises(PermissionError):
             get_auth()
+
+    """
+    reference: https://github.com/PyGithub/PyGithub/blob/v2.6.1/github/Auth.py#L153-L173
+    assertion: assert get Github class object successfully from GitHub Action
+    """
+    @patch.dict(os.environ, {'GH_TOKEN': get_gh_token()}, clear=True)  # checkov:skip=CKV_SECRET_6
+    def test_get_auth_with_valid_gh_token(self):
+        self.assertIsInstance(get_auth(), Github)
 
 
 class TestGetOwnerRepo(unittest.TestCase):
@@ -134,6 +151,7 @@ class TestUpdatePreCommit(unittest.TestCase):
 
 class TestZMain(unittest.TestCase):
     file = 'tests/files/pre-commit-config.yaml'
+    invalid_yaml = 'tests/files/invalid-yaml.yaml'
 
     def setUp(self):
         self.runner = CliRunner()
@@ -154,6 +172,11 @@ class TestZMain(unittest.TestCase):
     def test_main_dry_run_true_failure(self):
         result = self.runner.invoke(main, ['--file', self.file])
         self.assertEqual(result.exit_code, 0)
+
+    ''' assert zero exit code with dry-run true with an invalid file '''
+    def test_main_dry_run_true_invalid_yaml(self):
+        result = self.runner.invoke(main, ['--file', self.invalid_yaml])
+        self.assertNotEqual(result.exit_code, 0)
 
     ''' assert zero exit code with dry-run true '''
     def test_main_dry_run_true_success(self):
