@@ -73,7 +73,7 @@ Options:
 
 ```
 (hello-world) ~/work/hello-world $ update-pre-commit --version
-update-pre-commit, version 1.0.0
+update-pre-commit, version 1.2.3
 ```
 
 <br><br>
@@ -90,7 +90,7 @@ By default, **update-pre-commit** implicitly runs `--dry-run true --open-pr fals
 ```
 (hello-world) ~/work/hello-world $ update-pre-commit
 
-Starting update-pre-commit on .pre-commit-config.yaml (dry-run True open-pr False)...
+Starting update-pre-commit (file: .pre-commit-config.yaml, dry-run True open-pr False)...
 
 hadolint/hadolint (v2.11.0) is not using the latest release rev (v2.12.0)
 pycqa/flake8 (7.1.2) is not using the latest release tag (7.2.0)
@@ -111,7 +111,7 @@ Update revs in .pre-commit-config.yaml: None
 ```
 (hello-world) ~/work/hello-world $ update-pre-commit --dry-run false
 
-Starting update-pre-commit on .pre-commit-config.yaml (dry-run False open-pr False)...
+Starting update-pre-commit (file: .pre-commit-config.yaml, dry-run False open-pr False)...
 
 hadolint/hadolint (v2.11.0) is not using the latest release rev (v2.12.0)
 pycqa/flake8 (7.1.2) is not using the latest release tag (7.2.0)
@@ -133,7 +133,7 @@ Update revs in .pre-commit-config.yaml: Success
 ```
 (hello-world) ~/work/hello-world $ update-pre-commit --dry-run false --open-pr true
 
-Starting update-pre-commit on .pre-commit-config.yaml (dry-run False open-pr True)...
+Starting update-pre-commit (file: .pre-commit-config.yaml, dry-run False open-pr True)...
 
 hadolint/hadolint (v2.11.0) is not using the latest release rev (v2.12.0)
 pycqa/flake8 (7.1.2) is not using the latest release tag (7.2.0)
