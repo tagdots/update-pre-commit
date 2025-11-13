@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## 1.2.5 (2025-11-13)
+
+### Fix
+
+- add a prefix to new branch name to label PR
+- update github-url
+
 ## 1.2.3 (2025-11-08)
 
 ### Fix
