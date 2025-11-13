@@ -160,7 +160,7 @@ def checkout_new_branch() -> Tuple[str, str]:
     Create a git object to checkout a new branch
     """
     branch_suffix = ulid.new()
-    new_local_branch_name = f'update_pre_commit_{branch_suffix}'
+    new_local_branch_name = f'dep/update_pre_commit_{branch_suffix}'
 
     repo = git.Repo(os.getcwd())
     repo_head_obj = repo.create_head(new_local_branch_name)
