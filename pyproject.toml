@@ -1,19 +1,16 @@
 [build-system]
 build-backend = "setuptools.build_meta"
-
-requires = [ "setuptools", "wheel" ]
+requires = [ "setuptools" ]
 
 [project]
 name = "update-pre-commit"
 version = "1.2.5"
-
 readme = "README.md"
 license-files = [ "LICENSE" ]
 authors = [
   { name = "developers", email = "developers@tagdots.com" },
 ]
 requires-python = ">=3.12.10"
-
 classifiers = [
   "Intended Audience :: Developers",
   "Programming Language :: Python :: 3 :: Only",
@@ -22,7 +19,6 @@ classifiers = [
   "Programming Language :: Python :: 3.14",
   "Topic :: Software Development :: Build Tools",
 ]
-
 dependencies = [
   "click==8.3.1",
   "gitpython==3.1.45",
@@ -30,12 +26,10 @@ dependencies = [
   "pyyaml==6.0.3",
   "ulid-py==1.1",
 ]
-
 optional-dependencies.local = [
   "commitizen",
   "pre-commit",
 ]
-
 optional-dependencies.test = [
   "build",
   "coverage",
@@ -44,13 +38,11 @@ optional-dependencies.test = [
   "pyscan-rs",
   "twine",
 ]
-
 urls.Changelog = "https://github.com/tagdots/update-pre-commit/blob/main/CHANGELOG.md"
 urls.Documentation = "https://github.com/tagdots/update-pre-commit/blob/main/README.md"
 urls.Homepage = "https://github.com/tagdots"
 urls.Issues = "https://github.com/tagdots/update-pre-commit/issues"
 urls.Repository = "https://github.com/tagdots/update-pre-commit"
-
 scripts.update-pre-commit = "update_pre_commit.run:main"
 
 [dependency-groups]
@@ -58,11 +50,9 @@ test = [
   "coverage[toml]",
 ]
 
-[tool.setuptools.packages.find]
-where = [ "src" ]
-
-[tool.setuptools.dynamic]
-version = { attr = "src.update_pre_commit.__init__" }
+[tool.setuptools]
+packages.find.where = [ "src" ]
+dynamic.version = { attr = "src.update_pre_commit.__init__" }
 
 [tool.pyproject-fmt]
 column_width = 125
@@ -70,26 +60,22 @@ indent = 2
 keep_full_version = true
 
 [tool.coverage]
+run.branch = true
+run.command_line = "-m unittest discover -vs tests/"
+run.include = [ "src/update_pre_commit/*" ]
+run.omit = [ "tests/*" ]
+report.fail_under = 80
+report.include = [ "src/update_pre_commit/*" ]
+report.show_missing = false
 source = [ "." ]
-
-[tool.coverage.run]
-branch = true
-command_line = "-m unittest discover -vs tests/"
-include = [ "src/update_pre_commit/*" ]
-omit = [ "tests/*" ]
-
-[tool.coverage.report]
-fail_under = 80
-show_missing = false
-include = [ "src/update_pre_commit/*" ]
 
 [tool.commitizen]
 name = "cz_conventional_commits"
-major_version_zero = false
-tag_format = "$version"
-update_changelog_on_bump = true
+version_scheme = "pep440"
+version_provider = "pep621"
 version_files = [
   "src/update_pre_commit/__init__.py:__version__",
 ]
-version_provider = "pep621"
-version_scheme = "pep440"
+major_version_zero = false
+tag_format = "$version"
+update_changelog_on_bump = true
