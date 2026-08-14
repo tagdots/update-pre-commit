@@ -24,7 +24,7 @@ dependencies = [
   "gitpython~=3.1.59",
   "pygithub~=2.9.1",
   "pyyaml~=6.0.3",
-  "ulid-py~=1.1",
+  "ulid-py~=1.1.0",
 ]
 urls.Changelog = "https://github.com/tagdots/update-pre-commit/blob/main/CHANGELOG.md"
 urls.Documentation = "https://github.com/tagdots/update-pre-commit/blob/main/README.md"
