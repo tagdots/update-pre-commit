@@ -984,7 +984,7 @@ wheels = [
 
 [[package]]
 name = "update-pre-commit"
-version = "1.2.10"
+version = "1.2.11"
 source = { editable = "." }
 dependencies = [
     { name = "click" },
