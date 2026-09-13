@@ -20,7 +20,7 @@ classifiers = [
   "Topic :: Software Development :: Build Tools",
 ]
 dependencies = [
-  "click~=8.4.2",
+  "click>=8.4.2,<8.6.0",
   "gitpython~=3.1.59",
   "pygithub>=2.9.1,<2.11.0",
   "pyyaml~=6.0.3",
