@@ -1,0 +1,62 @@
+name: "Update pre-commit"
+
+description: "Run update-pre-commit to keep pre-commit hooks up to date and optionally create pull request"
+
+author: tagdots
+
+branding:
+  icon: activity
+  color: green
+
+inputs:
+  dry-run:
+    description: "Dry Run"
+    default: "false"
+
+  file:
+    description: "File to update"
+    default: ".pre-commit-config.yaml"
+
+  open-pr:
+    description: "Open Pull Request"
+    default: "true"
+
+runs:
+  using: "composite"
+
+  steps:
+    - name: Checkout source code # https://github.com/marketplace/actions/checkout
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+    - name: Setup Python # https://github.com/marketplace/actions/setup-python
+      uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+      with:
+        python-version: "3.14.x"
+
+    - name: Setup UV # https://github.com/marketplace/actions/astral-sh-setup-uv
+      uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4 # v10.1.0
+      with:
+        enable-cache: "true"
+        version: "0.12.x"
+
+    - name: Install App
+      shell: bash
+      run: |
+        uv venv
+        uv pip install -U update-pre-commit
+
+    - name: Show Versions
+      shell: bash
+      run: |
+        echo "Python Version : $(python --version)"
+        echo "UV Version     : $(uv --version)"
+        echo "App Version    : $(uv run update-pre-commit --version)"
+
+    - name: Run update-pre-commit
+      shell: bash
+      env:
+        INPUT_DRY_RUN: "${{ inputs.dry-run }}"
+        INPUT_FILE: "${{ inputs.file }}"
+        INPUT_OPEN_PR: "${{ inputs.open-pr }}"
+      run: |
+        uv run update-pre-commit --dry-run "${INPUT_DRY_RUN}" --file "${INPUT_FILE}" --open-pr "${INPUT_OPEN_PR}"
