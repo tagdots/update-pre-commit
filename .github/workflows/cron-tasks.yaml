@@ -99,7 +99,7 @@ jobs:
     steps:
       - name: Run setup-badge-action # https://github.com/marketplace/actions/update-pre-commit
         id: marketplace
-        uses: tagdots/setup-badge-action@a80688d12cf761973e340674bcf552af366afba5 # 1.0.28
+        uses: tagdots/setup-badge@9f61d39dc1c258a684d6f6ddac04d79a51d15144 # 1.2.3
         with:
           badge-name: marketplace
           badge-url: https://github.com/marketplace/actions/update-pre-commit
