@@ -118,15 +118,6 @@ Options:
 
 <br><br>
 
-🏃 _**Run to show version**_: `--version`
-
-```
-(hello-world) ~/work/hello-world $ update-pre-commit --version
-update-pre-commit, version 1.3.0
-```
-
-<br><br>
-
 🏃 _**Run default (without any options)**_
 
 By default, **update-pre-commit** implicitly runs `--dry-run true --open-pr false`.
