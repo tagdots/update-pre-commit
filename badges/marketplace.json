@@ -3,6 +3,6 @@
   "style": "flat",
   "label": "Marketplace",
   "labelColor": "2e2e2e",
-  "message": "update-pre-commit-action",
-  "color": "FF6360"
+  "message": "Update pre-commit",
+  "color": "2986CC"
 }
