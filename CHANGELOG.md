@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## 1.3.0 (2026-09-23)
+
+
+- docs: update README
+- feat: Add action
+- refactor: refactor git commands and related functions
+- build: update dependencies to use flexible bounds
+- fix pyproject-fmt
+- build: fix coverage break due to pyproject-fmt
+
 ## 1.2.11 (2026-08-14)
 
 ## 1.2.10 (2026-08-14)
